@@ -1,0 +1,9 @@
+<component name="libraryTable">
+  <library name="pCloudy-java-connector">
+    <CLASSES>
+      <root url="jar://$PROJECT_DIR$/src/main/resources/lib/pCloudy-java-connector.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES />
+  </library>
+</component>
