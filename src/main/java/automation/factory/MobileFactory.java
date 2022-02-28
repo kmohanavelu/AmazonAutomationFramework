@@ -20,7 +20,7 @@ import java.net.URL;
 import java.util.ArrayList;
 import java.util.Arrays;
 
-import static automation.utitilites.Constants.*;
+import static automation.constants.AppProperties.*;
 
 public class MobileFactory {
 
@@ -96,7 +96,7 @@ public class MobileFactory {
             desiredCapabilties.setCapability(AndroidMobileCapabilityType.APP_PACKAGE, ANDROID_PACKAGE);
             desiredCapabilties.setCapability(MobileCapabilityType.FULL_RESET, false);
             desiredCapabilties.setCapability(MobileCapabilityType.NO_RESET, true);
-            desiredCapabilties.setCapability(AndroidMobileCapabilityType.APP_WAIT_DURATION, ANDROID_APP_WAIT_DURATION);
+            desiredCapabilties.setCapability(AndroidMobileCapabilityType.APP_WAIT_DURATION, 40000);
             desiredCapabilties.setCapability(AndroidMobileCapabilityType.AUTO_GRANT_PERMISSIONS, true);
             desiredCapabilties.setCapability(AndroidMobileCapabilityType.DISABLE_ANDROID_WATCHERS, true);
             desiredCapabilties.setCapability(AndroidMobileCapabilityType.DISABLE_WINDOW_ANIMATION, true);
