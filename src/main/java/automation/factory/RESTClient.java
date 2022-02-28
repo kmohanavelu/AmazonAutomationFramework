@@ -1,12 +1,12 @@
 package automation.factory;
 
-import automation.constants.Environment;
 import jakarta.ws.rs.client.*;
 import jakarta.ws.rs.core.Response;
 import lombok.*;
 import org.apache.log4j.Logger;
 import org.glassfish.jersey.client.HttpUrlConnectorProvider;
 import org.json.JSONObject;
+
 import java.util.HashMap;
 import java.util.Map;
 
@@ -26,10 +26,10 @@ public class RESTClient {
     private JSONObject requestBody = new JSONObject();
 
     @Builder.Default
-    private String basicAuthentication = Environment.AUTHORISATION;
+    private String basicAuthentication = "";
 
     @Builder.Default
-    private String baseURL = Environment.HOST_NAME;
+    private String baseURL = "";
 
     @Builder.Default
     private String path = "/";

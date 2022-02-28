@@ -1,6 +1,6 @@
 package automation.factory;
 
-import automation.decorators.DriverDecorator;
+import io.github.bonigarcia.wdm.WebDriverManager;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.edge.EdgeDriver;
@@ -8,7 +8,6 @@ import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.ie.InternetExplorerDriver;
 import org.openqa.selenium.opera.OperaDriver;
 import org.openqa.selenium.safari.SafariDriver;
-import io.github.bonigarcia.wdm.WebDriverManager;
 
 public class BrowserFactory {
 
@@ -47,6 +46,12 @@ public class BrowserFactory {
                 webDriver = new InternetExplorerDriver();
                 break;
         }
-        driver.set((DriverDecorator)webDriver);
+        webDriver.get("https://www.amazon.in/");
+        webDriver.manage().window().maximize();
+        driver.set(webDriver);
+    }
+
+    public static WebDriver getDriver(){
+        return driver.get();
     }
 }
