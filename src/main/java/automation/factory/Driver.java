@@ -9,7 +9,7 @@ import org.openqa.selenium.ie.InternetExplorerDriver;
 import org.openqa.selenium.opera.OperaDriver;
 import org.openqa.selenium.safari.SafariDriver;
 
-public class BrowserFactory {
+public class Driver {
 
     public static ThreadLocal<WebDriver> driver = new ThreadLocal<>();
 
@@ -18,33 +18,35 @@ public class BrowserFactory {
      * WebDriver Manager manages the driver setup needed for each of the driver.
      * Hence there is no need to download and set driver executable path manually for each of the WebDriver
      * **/
-    public static void initialiseBrowser(String browserName){
+    public static void initialiseBrowser(Browser browser){
         WebDriver webDriver = null;
-        switch (browserName) {
-            case "firefox":
+        switch (browser) {
+            case Firefox:
                 WebDriverManager.firefoxdriver().setup();
                 webDriver = new FirefoxDriver();
                 break;
-            case "edge":
+            case Edge:
                 WebDriverManager.edgedriver().setup();
                 webDriver = new EdgeDriver();
                 break;
-            case "chrome":
+            case Chrome:
                 WebDriverManager.chromedriver().setup();
                 webDriver = new ChromeDriver();
                 break;
-            case "safari":
+            case Safari:
                 WebDriverManager.safaridriver().setup();
                 webDriver = new SafariDriver();
                 break;
-            case "opera":
+            case Opera:
                 WebDriverManager.operadriver().setup();
                 webDriver = new OperaDriver();
                 break;
-            case "ie":
+            case InternetExplorer:
                 WebDriverManager.iedriver().setup();
                 webDriver = new InternetExplorerDriver();
                 break;
+            default:
+                throw new IllegalArgumentException("Unexpected value: " + browser.name());
         }
         webDriver.get("https://www.amazon.in/");
         webDriver.manage().window().maximize();

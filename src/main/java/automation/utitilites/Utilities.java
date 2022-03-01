@@ -1,6 +1,8 @@
 package automation.utitilites;
 
 import org.apache.log4j.Logger;
+import org.apache.log4j.PropertyConfigurator;
+
 import java.io.BufferedReader;
 import java.io.File;
 import java.io.InputStreamReader;
@@ -38,5 +40,11 @@ public class Utilities {
         } catch (Exception e) {
             log.error("Exception occurred while executing shell script ",e);
         }
+    }
+
+    public static void initialiseLog4j(){
+        File sourceDir = new File("src");
+        File log4jProperties = new File(sourceDir, "main/resources/log4j.properties");
+        PropertyConfigurator.configure(log4jProperties.getAbsolutePath());
     }
 }

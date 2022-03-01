@@ -1,0 +1,6 @@
+03-01-2022 14:41:02 INFO  UserAction:38 - Moved to element : [[ChromeDriver: chrome on MAC (781a5e82af30073e2bcb496e9d294b08)] -> id: nav-link-accountList-nav-line-1]
+03-01-2022 14:41:10 INFO  UserAction:25 - Clicked on Proxy element for: DefaultElementLocator 'By.cssSelector: #nav-link-accountList > .nav-line-2'
+03-01-2022 14:41:16 INFO  UserAction:31 - Send keys : kishoremohanavelu@yahoo.com to WebElement [[ChromeDriver: chrome on MAC (781a5e82af30073e2bcb496e9d294b08)] -> id: ap_email]
+03-01-2022 14:41:25 INFO  UserAction:25 - Clicked on [[ChromeDriver: chrome on MAC (781a5e82af30073e2bcb496e9d294b08)] -> css selector: .a-button-inner > #continue]
+03-01-2022 14:41:26 INFO  UserAction:31 - Send keys : HowAreYou4532# to WebElement [[ChromeDriver: chrome on MAC (781a5e82af30073e2bcb496e9d294b08)] -> id: ap_password]
+03-01-2022 14:41:52 INFO  UserAction:25 - Clicked on Proxy element for: DefaultElementLocator 'By.id: signInSubmit'

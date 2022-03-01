@@ -1,10 +1,11 @@
 package automation.pages;
 
-import automation.factory.BrowserFactory;
+import automation.factory.Driver;
+import automation.utitilites.UserAction;
+import org.apache.log4j.Logger;
 import org.openqa.selenium.NoSuchElementException;
 import org.openqa.selenium.StaleElementReferenceException;
 import org.openqa.selenium.WebElement;
-import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 import org.openqa.selenium.support.ui.ExpectedConditions;
@@ -14,9 +15,11 @@ import java.time.Duration;
 
 public class AccountAndLists {
 
+    private static Logger log = Logger.getLogger(AccountAndLists.class);
+
     public AccountAndLists(){
-        PageFactory.initElements(BrowserFactory.driver.get(),this);
-        WebDriverWait wait = new WebDriverWait(BrowserFactory.driver.get(), Duration.ofSeconds(10));
+        PageFactory.initElements(Driver.getDriver(),this);
+        WebDriverWait wait = new WebDriverWait(Driver.getDriver(), Duration.ofSeconds(10));
         wait.ignoring(NoSuchElementException.class).ignoring(StaleElementReferenceException.class);
         wait.until(ExpectedConditions.visibilityOf(helloSignIn));
     }
@@ -28,10 +31,8 @@ public class AccountAndLists {
     private WebElement signInBtn;
 
     public void navigateToSignInPage(){
-        Actions actions = new Actions(BrowserFactory.getDriver());
-        actions.moveToElement(helloSignIn);
-        actions.click(helloSignIn);
-        signInBtn.click();
+        UserAction.moveToElement(helloSignIn);
+        UserAction.click(signInBtn);
     }
 
 }

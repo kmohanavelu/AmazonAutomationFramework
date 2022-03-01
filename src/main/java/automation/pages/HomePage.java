@@ -1,7 +1,7 @@
 package automation.pages;
 
-
-import automation.factory.BrowserFactory;
+import automation.factory.Driver;
+import org.apache.log4j.Logger;
 import org.openqa.selenium.NoSuchElementException;
 import org.openqa.selenium.StaleElementReferenceException;
 import org.openqa.selenium.WebElement;
@@ -14,9 +14,11 @@ import java.time.Duration;
 
 public class HomePage {
 
+    private static Logger log = Logger.getLogger(HomePage.class);
+
     public HomePage(){
-        PageFactory.initElements(BrowserFactory.driver.get(),this);
-        WebDriverWait wait = new WebDriverWait(BrowserFactory.driver.get(), Duration.ofSeconds(10));
+        PageFactory.initElements(Driver.getDriver(),this);
+        WebDriverWait wait = new WebDriverWait(Driver.getDriver(), Duration.ofSeconds(10));
         wait.ignoring(NoSuchElementException.class).ignoring(StaleElementReferenceException.class);
         wait.until(ExpectedConditions.visibilityOf(userGreeting));
     }

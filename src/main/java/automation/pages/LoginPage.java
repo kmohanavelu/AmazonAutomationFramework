@@ -1,6 +1,8 @@
 package automation.pages;
 
-import automation.factory.BrowserFactory;
+import automation.factory.Driver;
+import automation.utitilites.UserAction;
+import org.apache.log4j.Logger;
 import org.openqa.selenium.NoSuchElementException;
 import org.openqa.selenium.StaleElementReferenceException;
 import org.openqa.selenium.WebElement;
@@ -13,9 +15,11 @@ import java.time.Duration;
 
 public class LoginPage {
 
+    private static Logger log = Logger.getLogger(LoginPage.class);
+
     public LoginPage(){
-        PageFactory.initElements(BrowserFactory.driver.get(),this);
-        WebDriverWait wait = new WebDriverWait(BrowserFactory.driver.get(), Duration.ofSeconds(10));
+        PageFactory.initElements(Driver.getDriver(),this);
+        WebDriverWait wait = new WebDriverWait(Driver.getDriver(), Duration.ofSeconds(10));
         wait.ignoring(NoSuchElementException.class).ignoring(StaleElementReferenceException.class);
         wait.until(ExpectedConditions.visibilityOf(signInHeader));
     }
@@ -36,23 +40,19 @@ public class LoginPage {
     private WebElement signInSubmitBtn;
 
     public void enterUserName(String userName){
-        emailIdTxtBox.sendKeys(userName);
+        UserAction.sendKeys(emailIdTxtBox,userName);
     }
 
     public void enterPassword(String password){
-        passwordTxtBox.sendKeys(password);
+        UserAction.sendKeys(passwordTxtBox,password);
     }
 
     public void clickContinueBtn(){
-        continueBtn.click();
+        UserAction.click(continueBtn);
     }
 
     public HomePage clickSubmitBtn(){
-        signInSubmitBtn.click();
+        UserAction.click(signInSubmitBtn);
         return new HomePage();
     }
-
-
-
-
 }
