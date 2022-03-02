@@ -50,6 +50,7 @@ public class Driver {
         }
         webDriver.get("https://www.amazon.in/");
         webDriver.manage().window().maximize();
+        webDriver.manage().deleteAllCookies();
         driver.set(webDriver);
     }
 

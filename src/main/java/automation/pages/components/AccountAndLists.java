@@ -1,4 +1,4 @@
-package automation.pages;
+package automation.pages.components;
 
 import automation.factory.Driver;
 import automation.utitilites.UserAction;

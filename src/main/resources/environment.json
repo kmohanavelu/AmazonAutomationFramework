@@ -1,5 +1,5 @@
 {
-  "findElementWaitTime": 10000,
-  "maxWaitTime": 30000,
-  "elementToBeClickableWaitTime": 10000
+  "findElementWaitTime": 10,
+  "maxWaitTime": 10,
+  "elementToBeClickableWaitTime": 10
 }
