@@ -1,38 +1,29 @@
 package automation.pages.components;
 
+import automation.abstracts.AbstractComponent;
+import automation.core.UserAction;
 import automation.factory.Driver;
-import automation.utitilites.UserAction;
+import lombok.Getter;
 import org.apache.log4j.Logger;
-import org.openqa.selenium.NoSuchElementException;
-import org.openqa.selenium.StaleElementReferenceException;
-import org.openqa.selenium.WebElement;
-import org.openqa.selenium.support.FindBy;
-import org.openqa.selenium.support.PageFactory;
+import org.openqa.selenium.By;
 import org.openqa.selenium.support.ui.ExpectedConditions;
-import org.openqa.selenium.support.ui.WebDriverWait;
 
-import java.time.Duration;
-
-public class AccountAndLists {
+@Getter
+public class AccountAndLists extends AbstractComponent {
 
     private static Logger log = Logger.getLogger(AccountAndLists.class);
 
     public AccountAndLists(){
-        PageFactory.initElements(Driver.getDriver(),this);
-        WebDriverWait wait = new WebDriverWait(Driver.getDriver(), Duration.ofSeconds(10));
-        wait.ignoring(NoSuchElementException.class).ignoring(StaleElementReferenceException.class);
-        wait.until(ExpectedConditions.visibilityOf(helloSignIn));
+        super(Driver.getDriver());
+        wait.until(ExpectedConditions.visibilityOfElementLocated(helloSignIn));
     }
 
-    @FindBy(id = "nav-link-accountList-nav-line-1")
-    private WebElement helloSignIn;
+    By helloSignIn = By.xpath("//a[@id='nav-link-accountList']");
 
-    @FindBy(css = "#nav-link-accountList > .nav-line-2")
-    private WebElement signInBtn;
+    By signInButton = By.xpath("//a[@class='nav-action-button' and @data-nav-ref='nav_signin']");
 
     public void navigateToSignInPage(){
-        UserAction.moveToElement(helloSignIn);
-        UserAction.click(signInBtn);
+        UserAction.move.moveToElement(helloSignIn);
+        UserAction.click.clickBtn(signInButton);
     }
-
 }

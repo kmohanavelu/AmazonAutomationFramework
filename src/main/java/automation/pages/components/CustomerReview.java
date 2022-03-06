@@ -1,58 +1,48 @@
 package automation.pages.components;
 
+import automation.abstracts.AbstractComponent;
+import automation.core.UserAction;
 import automation.factory.Driver;
-import automation.pages.User;
-import automation.utitilites.UserAction;
-import org.apache.log4j.Logger;
-import org.openqa.selenium.NoSuchElementException;
-import org.openqa.selenium.StaleElementReferenceException;
-import org.openqa.selenium.WebElement;
-import org.openqa.selenium.support.FindBy;
-import org.openqa.selenium.support.PageFactory;
+import automation.userActions.Scroll;
+import lombok.Getter;
+import org.openqa.selenium.By;
 import org.openqa.selenium.support.ui.ExpectedConditions;
-import org.openqa.selenium.support.ui.WebDriverWait;
 
-import java.time.Duration;
-
-import static automation.constants.Environment.FIND_ELEMENT_WAIT_TIME;
-
-public class CustomerReview {
+@Getter
+public class CustomerReview extends AbstractComponent {
 
     public CustomerReview(){
-        PageFactory.initElements(Driver.getDriver(),this);
-        WebDriverWait wait = new WebDriverWait(Driver.getDriver(), Duration.ofSeconds(FIND_ELEMENT_WAIT_TIME));
-        wait.ignoring(NoSuchElementException.class).ignoring(StaleElementReferenceException.class);
-        wait.until(ExpectedConditions.visibilityOf(sectionHeader));
+        super(Driver.getDriver());
+        wait.until(ExpectedConditions.visibilityOfElementLocated(sectionHeader));
     }
 
-    @FindBy(xpath = "//div[@id='reviewsRefinements']//span[contains(text(),'Customer Review')]")
-    private WebElement sectionHeader;
+    By sectionHeader = By.xpath("//div[@id='reviewsRefinements']//span[contains(text(),'Customer Review')]");
 
-    @FindBy(xpath = "//div[@id='reviewsRefinements']//a[.//span[text()='4 Stars & Up']]")
-    private WebElement fourRating;
+    By fourRating = By.xpath("//div[@id='reviewsRefinements']//a[.//span[text()='4 Stars & Up']]");
 
-    @FindBy(xpath = "//div[@id='reviewsRefinements']//a[.//span[text()='3 Stars & Up']]")
-    private WebElement threeRating;
+    By threeRating = By.xpath("//div[@id='reviewsRefinements']//a[.//span[text()='3 Stars & Up']]");
 
-    @FindBy(xpath = "//div[@id='reviewsRefinements']//a[.//span[text()='2 Stars & Up']]")
-    private WebElement twoRating;
+    By twoRating = By.xpath("//div[@id='reviewsRefinements']//a[.//span[text()='2 Stars & Up']]");
 
-    @FindBy(xpath = "//div[@id='reviewsRefinements']//a[.//span[text()='1 Star & Up']]")
-    private WebElement oneRating;
+    By oneRating = By.xpath("//div[@id='reviewsRefinements']//a[.//span[text()='1 Star & Up']]");
 
     public void select4StarRating(){
-        UserAction.click(fourRating);
+        Scroll.scrollElementIntoView(fourRating);
+        UserAction.click.clickElement(fourRating);
     }
 
     public void select3StarRating(){
-        UserAction.click(threeRating);
+        Scroll.scrollElementIntoView(threeRating);
+        UserAction.click.clickElement(threeRating);
     }
 
     public void select2StarRating(){
-        UserAction.click(twoRating);
+        Scroll.scrollElementIntoView(twoRating);
+        UserAction.click.clickElement(twoRating);
     }
 
     public void select1StarRating(){
-        UserAction.click(oneRating);
+        Scroll.scrollElementIntoView(oneRating);
+        UserAction.click.clickElement(oneRating);
     }
 }

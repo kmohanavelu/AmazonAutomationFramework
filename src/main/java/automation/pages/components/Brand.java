@@ -1,24 +1,30 @@
 package automation.pages.components;
 
+import automation.abstracts.AbstractComponent;
 import automation.factory.Driver;
-import org.openqa.selenium.NoSuchElementException;
-import org.openqa.selenium.StaleElementReferenceException;
-import org.openqa.selenium.support.FindBy;
-import org.openqa.selenium.support.PageFactory;
+import lombok.Getter;
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.ExpectedConditions;
-import org.openqa.selenium.support.ui.WebDriverWait;
 
-import java.time.Duration;
+import java.util.List;
 
-import static automation.constants.Environment.FIND_ELEMENT_WAIT_TIME;
-
-public class Brand {
+@Getter
+public class Brand extends AbstractComponent {
 
     public Brand(){
-        PageFactory.initElements(Driver.getDriver(),this);
-        WebDriverWait wait = new WebDriverWait(Driver.getDriver(), Duration.ofSeconds(FIND_ELEMENT_WAIT_TIME));
-        wait.ignoring(NoSuchElementException.class).ignoring(StaleElementReferenceException.class);
-//        wait.until(ExpectedConditions.visibilityOf(sectionHeader));
+        super(Driver.getDriver());
+        wait.until(ExpectedConditions.visibilityOf(Driver.getDriver().findElement(sectionHeader)));
+    }
+
+    By sectionHeader = By.xpath("//div[@id='brandsRefinements']//span[contains(text(),'Brand')]");
+    By brandChoice = By.xpath("//div[@id='brandsRefinements']//li");
+
+    public void selectBrandChoice(String choiceOfBrand){
+        List<WebElement> brandChoices = Driver.getDriver().findElements(brandChoice);
+        for (WebElement choice : brandChoices) {
+
+        }
     }
 
 }
